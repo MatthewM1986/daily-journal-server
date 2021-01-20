@@ -18,8 +18,10 @@ class HandleRequests(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-        self.send_header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept')
+        self.send_header('Access-Control-Allow-Methods',
+                         'GET, POST, PUT, DELETE')
+        self.send_header('Access-Control-Allow-Headers',
+                         'X-Requested-With, Content-Type, Accept')
         self.end_headers()
 
     # Here's a method on the class that overrides the parent's method.
@@ -32,12 +34,12 @@ class HandleRequests(BaseHTTPRequestHandler):
         print(self.path)
 
         # It's an if..else statement
-        if self.path == "/animals":
+        if self.path == "/entries":
             # In Python, this is a list of dictionaries
             # In JavaScript, you would call it an array of objects
             response = [
-                { "id": 1, "name": "Snickers", "species": "Dog" },
-                { "id": 2, "name": "Lenny", "species": "Cat" }
+                {"id": 1, "name": "Snickers", "species": "Dog"},
+                {"id": 2, "name": "Lenny", "species": "Cat"}
             ]
 
         else:
@@ -57,9 +59,9 @@ class HandleRequests(BaseHTTPRequestHandler):
         response = f"received post request:<br>{post_body}"
         self.wfile.write(response.encode())
 
-
     # Here's a method on the class that overrides the parent's method.
     # It handles any PUT request.
+
     def do_PUT(self):
         self.do_POST()
 
@@ -70,6 +72,7 @@ def main():
     host = ''
     port = 8088
     HTTPServer((host, port), HandleRequests).serve_forever()
+
 
 if __name__ == "__main__":
     main()
