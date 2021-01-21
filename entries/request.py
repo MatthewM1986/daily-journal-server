@@ -66,8 +66,8 @@ def get_single_entry(id):
         data = db_cursor.fetchone()
 
         # Create an animal instance from the current row
-        entry = Entry(row['id'], row['concept'], row['entry'],
-                      row['date'], row['mood_id'])
+        entry = Entry(data['id'], data['concept'], data['entry'],
+                      data['date'], data['mood_id'])
 
     return json.dumps(entry.__dict__)
 

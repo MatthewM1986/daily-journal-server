@@ -59,7 +59,7 @@ def get_single_mood(id):
         data = db_cursor.fetchone()
 
         # Create an animal instance from the current row
-        mood = Mood(row['id'], row['label'])
+        mood = Mood(data['id'], data['label'])
 
     return json.dumps(mood.__dict__)
 
