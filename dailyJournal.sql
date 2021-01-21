@@ -3,7 +3,7 @@ CREATE TABLE `Entries` (
     `concept` TEXT NOT NULL,
     `entry` TEXT NOT NULL,
     `date` INTEGER NOT NULL,
-    `lmood_id` INTEGER NOT NULL,
+    `mood_id` INTEGER NOT NULL,
     FOREIGN KEY(`mood_id`) REFERENCES `Mood`(`id`)
 );
 INSERT INTO `Entries`
